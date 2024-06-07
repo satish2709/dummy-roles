@@ -1,0 +1,9 @@
+---
+  - hosts: all
+    become: true
+    name: play1
+    tasks:
+        - name: Execute command 'Date'
+          command: date
+        - name: execute script on server
+          script: test_script.sh    

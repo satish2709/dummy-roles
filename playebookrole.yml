@@ -1,0 +1,12 @@
+---
+  - hosts: all
+    become: true
+    tasks:
+      - debug:
+            msg: "Before we rune our role"
+      - import_role:
+            name: apache
+      - include_role:
+            name: apache
+      - debug:
+            msg: "After we run our role"        

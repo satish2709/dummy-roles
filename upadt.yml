@@ -1,0 +1,32 @@
+---
+- name: Testing Loops
+  hosts: localhost
+  become: yes
+  become method: sudo
+  vars:
+    tool: "python"
+    server: "ftp"
+    python_versions:
+      - "2.0"
+      - "2. 1"
+    python_2_0: # colors
+      - BeOpen-Python-2. 0-1.1386.rpm
+      - BeOpen-Python-2. 0-1. sra. rpm
+      - BeOpen-Python-2. 0-Debug. zip
+    python 2_1:
+      - Python-2.1-Debug. zip
+      - python2-2.1-5.1386. rpm
+      - python2-tools-2.1-5.1386.rpm
+  tasks:
+  - name: Create required directories
+    file:
+      path: "/home/vanith/( tool l|/(f item I}"
+      state: directory
+      100p: "(1 python_versions ))"
+        
+  - name: Download python packages
+    get _url:
+    url: "https://www.python.org/{server/l/11 tool /l/((item.0 )l/{f item.1 ))"
+    dest: "/home/vanith/({ tool l/{{ item.0 J/{( item.1 )}"
+    mode: "0775"
+    100p: "(1 python_versions | product ([python_2_0, python_2_1]) | map ('flatten') | list ))"
